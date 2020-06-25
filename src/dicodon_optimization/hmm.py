@@ -66,7 +66,7 @@ class DegenerateHMM:
             return 0, []
 
         V = [] #the score of the survivor path that ended in state y at observed_sequence t
-        for t in xrange(0, len(observed_sequence)):
+        for t in range(0, len(observed_sequence)):
             if observed_sequence[t] not in self.allowed_emissions:
                 raise ValueError("Invalid emission: %s" % observed_sequence[t])
             V.append({})
@@ -79,7 +79,7 @@ class DegenerateHMM:
             V[0][state] = (0 if emission == observed_sequence[0] else float('-inf'))
             path[state] = [state]
 
-        for t in xrange(1, len(observed_sequence)):
+        for t in range(1, len(observed_sequence)):
             new_path = {} #we only keep the survivor paths for the latest t
 
             any_survivors = False #to check if this HMM could have reached this state...
